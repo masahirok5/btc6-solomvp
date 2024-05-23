@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 app.use('/', express.static('../frontend/dist'));
 
 app.get('/member/:id', async (req, res) => {
+  // res.set({ 'Access-Control-Allow-Origin': '*' });
   const members = await knex('member').select('');
   res.send(members);
 });

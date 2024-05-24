@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.use('/', express.static('../frontend/dist'));
 

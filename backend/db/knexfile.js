@@ -7,7 +7,7 @@ module.exports = {
     client: 'pg',
     connection: {
       user: process.env.POSTGRES_USER || 'user',
-      database: process.env.POSTGRES_DB || 'solomvp',
+      database: process.env.POSTGRES_DB || 'solomvp_db',
     },
     migrations: {
       directory: './data/migrations',
@@ -20,7 +20,7 @@ module.exports = {
       host: process.env.DATABASE_URL,
       user: 'postgres',
       password: process.env.DATABASE_pass,
-      database: 'solomvp',
+      database: 'solomvp_db',
       port: 5432,
       ssl: {
         rejectUnauthorized: false,

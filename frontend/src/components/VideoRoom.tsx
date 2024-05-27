@@ -24,7 +24,7 @@ export const VideoRoom: FC = () => {
     }
 
     if (mediaType === 'audio') {
-      // user.audioTrack.play();
+      user.audioTrack.play();
     }
   };
 

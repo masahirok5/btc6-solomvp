@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  gap: 10%;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 1px solid grey;
+  background-color: #333333;
+}
+
+h2:hover {
+  cursor: pointer;
+}
+
+.selected {
+  color: #00aeef;
+  text-decoration: underline;
+}

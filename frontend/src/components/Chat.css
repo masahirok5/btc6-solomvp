@@ -1,0 +1,42 @@
+.chat-container {
+  display: flex;
+  z-index: 999;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid grey;
+  position: fixed;
+  background-color: #333333;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+textarea {
+  font-size: 15px;
+  width: 80%;
+}
+
+.microon {
+  height: 40px;
+  width: 40px;
+  mix-blend-mode: multiply;
+}
+
+.microoff {
+  height: 40px;
+  width: 40px;
+  mix-blend-mode: multiply;
+}
+
+.reset {
+  height: 40px;
+  width: 40px;
+  mix-blend-mode: multiply;
+}
+
+.submit-btn {
+  height: 40px;
+  width: 40px;
+}

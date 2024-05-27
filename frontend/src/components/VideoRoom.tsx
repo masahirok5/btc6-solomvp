@@ -4,9 +4,8 @@ import AgoraRTC from 'agora-rtc-sdk-ng';
 import { VideoPlayer } from './VideoPlayer';
 import './VideoRoom.css';
 
-const APP_ID = 'e4ecfba8c3374004b336054a1e7bcfd6';
-const TOKEN =
-  '007eJxTYJjEpe+ieLJJN+SAGZMOY+n6dUGbZB6L3y7ubfycGr9aS0mBIdUkNTktKdEi2djY3MTAwCTJ2NjMwNQk0TDVPCk5LcXs687gtIZARobaDj9WRgYIBPGZGVIy0xkYAGmXHQo=';
+const APP_ID = import.meta.env.VITE_APPID;
+const TOKEN = import.meta.env.VITE_TOKEN;
 const CHANNEL = 'dig';
 const client = AgoraRTC.createClient({
   mode: 'rtc',

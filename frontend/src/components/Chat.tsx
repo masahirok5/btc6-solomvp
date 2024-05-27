@@ -84,11 +84,27 @@ export const Chat: FC = () => {
         type="image"
         src="/send.png"
         alt="送信"
-        onClick={() => {
-          console.log(value);
-          resetTranscript();
+        onClick={async () => {
+          if (value !== '') {
+            const data = {
+              member_id: 1,
+              partner: 0,
+              content: value,
+              datetime: new Date(),
+            };
+            await fetch('/chat/1/0', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+            window.location.reload();
+            //   resetTranscript();
+          }
         }}
       />
+      <audio src=""></audio>
     </div>
   );
 };

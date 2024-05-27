@@ -21,6 +21,8 @@
   display: flex;
   justify-content: flex-start;
   margin-left: 50px;
+  align-items: center;
+  gap: 10px;
 }
 
 .you p {
@@ -28,4 +30,10 @@
   background-color: white;
   color: black;
   border-radius: 40% 30% 30% 0%;
+}
+
+.play {
+  height: 40px;
+  width: 40px;
+  mix-blend-mode: multiply;
 }

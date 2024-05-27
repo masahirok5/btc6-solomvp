@@ -13,6 +13,7 @@ export const Header: FC<Props> = ({ chatOrVideo, setChatOrVideo }) => {
         className={chatOrVideo ? 'selected' : ''}
         onClick={() => {
           setChatOrVideo(true);
+          window.location.reload();
         }}
       >
         AIチャット

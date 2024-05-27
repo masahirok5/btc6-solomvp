@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css';
-import { Members } from './components/Members';
 import { VideoRoom } from './components/VideoRoom';
 import { Chat } from './components/Chat';
 import { Header } from './components/Header';
@@ -13,7 +12,6 @@ function App() {
   return (
     <div className="app">
       <Header chatOrVideo={chatOrVideo} setChatOrVideo={setChatOrVideo} />
-      <Members />
       {chatOrVideo ? (
         <>
           <ChatArea />

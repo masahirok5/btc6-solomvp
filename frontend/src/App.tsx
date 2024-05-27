@@ -1,35 +1,94 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useState, useRef, useEffect } from 'react';
 import './App.css';
 import { Members } from './components/Members';
+import 'regenerator-runtime';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from 'react-speech-recognition';
+import { VideoRoom } from './components/VideoRoom';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [value, setValue] = useState('');
+  const [height, setHeight] = useState(0);
+  const textAreaRef = useRef<null | HTMLTextAreaElement>(null);
+  const [joined, setJoined] = useState(false);
+
+  useEffect(() => {
+    if (textAreaRef.current) {
+      setHeight(0); // テキストエリアの高さを初期値に戻す
+    }
+  }, [value]);
+
+  useEffect(() => {
+    // 高さが初期値の場合にscrollHeightを高さに設定する
+    if (!height && textAreaRef.current) {
+      setHeight(textAreaRef.current.scrollHeight);
+    }
+  }, [height]);
+
+  function handleChangeValue(value: string) {
+    setValue(value);
+  }
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
+
+  useEffect(() => {
+    setValue(transcript);
+  }, [transcript]);
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>ブラウザが音声認識未対応です</span>;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
       <Members />
+
+      <div id="react-speech-recognition">
+        <p>入力: {listening ? 'on' : 'off'}</p>
+        <button
+          type="button"
+          onClick={() => SpeechRecognition.startListening({ continuous: true })}
+        >
+          入力開始
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            SpeechRecognition.stopListening();
+            setValue(transcript);
+          }}
+        >
+          Stop
+        </button>
+        <button type="button" onClick={() => resetTranscript()}>
+          リセット
+        </button>
+        <p>{transcript}</p>
+        <textarea
+          ref={textAreaRef}
+          value={value}
+          onChange={(e) => handleChangeValue(e.target.value)}
+          style={{ height: height ? `${height}px` : 'auto', border: 'none' }}
+        />
+        <button
+          onClick={() => {
+            console.log(value);
+          }}
+        >
+          送信
+        </button>
+      </div>
+      <div>
+        <h1>Web conference</h1>
+        {!joined && <button onClick={() => setJoined(true)}>Join Room</button>}
+        {joined && <VideoRoom />}
+      </div>
     </>
   );
 }

@@ -26,10 +26,11 @@
 }
 
 .you p {
+  max-width: 50%;
   padding: 5px 10px;
   background-color: white;
   color: black;
-  border-radius: 40% 30% 30% 0%;
+  border-radius: 15% 20% 30% 0%;
 }
 
 .play {

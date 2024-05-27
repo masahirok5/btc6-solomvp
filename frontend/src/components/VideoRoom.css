@@ -1,11 +1,6 @@
 .video-room-container {
   display: flex;
   justify-content: center;
-}
-
-.video-room {
-  display: flex;
-
-  /* display: 'grid';
-  grid-template-columns: repeat(2, 200px); */
+  flex-wrap: wrap;
+  gap: 30px;
 }

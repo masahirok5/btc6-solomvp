@@ -67,8 +67,8 @@ export const VideoRoom: FC = () => {
   }, []);
 
   return (
-    <div className="video-room-container">
-      <div className="video-room">
+    <div>
+      <div className="video-room-container">
         {users.map((user) => (
           <VideoPlayer key={user.uid} user={user} />
         ))}

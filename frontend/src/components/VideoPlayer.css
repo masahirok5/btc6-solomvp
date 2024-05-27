@@ -1,0 +1,14 @@
+.video-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.region {
+  width: 200px;
+  height: 200px;
+}
+
+.leave {
+  color: white;
+}

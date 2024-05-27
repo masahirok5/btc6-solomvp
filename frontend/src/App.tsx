@@ -22,7 +22,8 @@ function App() {
           <br />
           <br />
           <br />
-          <h1>Web conference</h1>
+          <br />
+          <br />
           {!joined && (
             <button onClick={() => setJoined(true)}>Join Room</button>
           )}
